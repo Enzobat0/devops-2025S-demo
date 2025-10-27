@@ -1,8 +1,8 @@
 blank_issues_enabled: false
 contact_links:
-  - name: 💬 Ask a Question
+  - name: Ask a Question
     url: https://github.com/pelino250/devops-2025S-demo/discussions
     about: Ask questions and discuss with other community members
-  - name: 📖 Documentation
+  - name: Documentation
     url: https://github.com/pelino250/devops-2025S-demo/blob/main/README.md
     about: Read the project documentation
