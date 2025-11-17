@@ -25,7 +25,19 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install ruff
+      - name: Log in to Azure Container Registry
+        uses: azure/docker-login@v1
+        with:
+          login-server: ${{ secrets.ACR_LOGIN_SERVER }}
+          username: ${{ secrets.ACR_USERNAME }}
+          password: ${{ secrets.ACR_PASSWORD }}
 
+      - name: Build, tag, and push image to ACR
+        run: |
+          docker tag my-image:latest ${{ secrets.ACR_LOGIN_SERVER }}/my-team-app-repo:${{ github.sha }}
+          docker push ${{ secrets.ACR_LOGIN_SERVER }}/my-team-app-repo:${{ github.sha }}
+
+       
       - name: Run Ruff
         run: ruff check .
         
